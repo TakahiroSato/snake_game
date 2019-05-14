@@ -1,6 +1,7 @@
 import box from "box";
 import keyboard from "keyboard";
 import settings from "settings";
+import childBox from "childBox";
 
 const playerColor = "#ff0000";
 
@@ -33,6 +34,18 @@ export default class player extends box {
         this.nextmy = settings.moveSpeed;
       }
     };
+    this._dummy = null;
+    this.dummyCnt = 0;
+    this.hasChild = false;
+  }
+  get dummy() {
+    return this._dummy;
+  }
+  set dummy(v) {
+    if (this._dummy) {
+      this._dummy.death();
+    }
+    this._dummy = v;
   }
   changeDirection() {
     if (this.nextmx !== 0 || this.nextmy !== 0) {
@@ -40,6 +53,8 @@ export default class player extends box {
         this.x % settings.cellWidth === 0 &&
         this.y % settings.cellHeight === 0
       ) {
+        if (this.hasChild)
+          this.dummy = new childBox(this.threejs, this.color, this);
         this.mx = this.nextmx;
         this.my = this.nextmy;
         this.nextmx = 0;
@@ -66,6 +81,15 @@ export default class player extends box {
     if (this.y + this.h > settings.fieldHeight) {
       this.y = settings.fieldHeight - this.h;
       this.my = 0;
+    }
+    if (this.dummy) {
+      this.dummyCnt += 1;
+      if (
+        this.dummyCnt >= Math.floor(settings.cellWidth / settings.moveSpeed)
+      ) {
+        this.dummy = null;
+        this.dummyCnt = 0;
+      }
     }
   }
 }
