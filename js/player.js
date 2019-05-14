@@ -51,13 +51,21 @@ export default class player extends box {
     this.changeDirection();
     this.x += this.mx;
     this.y += this.my;
-    if (this.x < 0) this.x = 0;
+    if (this.x < 0) {
+      this.x = 0;
+      this.mx = 0;
+    }
     if (this.x + this.w > settings.fieldWidth) {
       this.x = settings.fieldWidth - this.w;
+      this.mx = 0;
     }
-    if (this.y < 0) this.y = 0;
+    if (this.y < 0) {
+      this.y = 0;
+      this.my = 0;
+    }
     if (this.y + this.h > settings.fieldHeight) {
       this.y = settings.fieldHeight - this.h;
+      this.my = 0;
     }
   }
 }

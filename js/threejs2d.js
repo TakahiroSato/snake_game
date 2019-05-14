@@ -25,7 +25,7 @@ export class threejsObject {
         1
       );
     }
-    if (this.mesh !== null) scene.remove(this.mesh);
+    if (this.mesh !== null) this.threejs2d.scene.remove(this.mesh);
     if (this.geometry !== null) this.geometry.dispose();
     if (this.material !== null) this.material.dispose();
     if (this.texture !== null) this.texture.dispose();
@@ -166,7 +166,6 @@ export class threejs2d {
     return obj;
   }
   drawBox(x, y, w, h, d, color) {
-    y *= -1;
     let obj = new threejsBoxObject(this);
     obj.geometry = new THREE.BoxGeometry(w, h, d);
     obj.material = new THREE.MeshLambertMaterial({ color: color });
