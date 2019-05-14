@@ -1,4 +1,5 @@
 import box from "box";
+import settings from "./settings";
 
 export default class childBox extends box {
   constructor(threejs, color, parent) {
@@ -8,7 +9,10 @@ export default class childBox extends box {
   }
   move() {
     this.parentMoveHistory.push({ mx: this.parent.mx, my: this.parent.my });
-    if (this.parentMoveHistory.length >= 11) {
+    if (
+      this.parentMoveHistory.length >=
+      Math.floor(settings.cellWidth / settings.moveSpeed)
+    ) {
       this.mx = this.parentMoveHistory[0].mx;
       this.my = this.parentMoveHistory[0].my;
       this.parentMoveHistory.shift();

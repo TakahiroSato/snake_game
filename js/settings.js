@@ -13,7 +13,8 @@ const settings = {
   })(),
   fieldHeight: (() => {
     return _mapHeight * _cellHeight;
-  })()
+  })(),
+  moveSpeed: 5
 };
 
 export default settings;

@@ -11,26 +11,26 @@ export default class player extends box {
     this.nextmy = 0;
     keyboard.left = () => {
       if (this.mx === 0) {
-        this.nextmx = -5;
+        this.nextmx = -settings.moveSpeed;
         this.nextmy = 0;
       }
     };
     keyboard.up = () => {
       if (this.my === 0) {
         this.nextmx = 0;
-        this.nextmy = -5;
+        this.nextmy = -settings.moveSpeed;
       }
     };
     keyboard.right = () => {
       if (this.mx === 0) {
-        this.nextmx = 5;
+        this.nextmx = settings.moveSpeed;
         this.nextmy = 0;
       }
     };
     keyboard.down = () => {
       if (this.my === 0) {
         this.nextmx = 0;
-        this.nextmy = 5;
+        this.nextmy = settings.moveSpeed;
       }
     };
   }
