@@ -7,7 +7,4 @@ export default class feed extends box {
     super(threejs, x, y, w, h, d, color);
   }
   move() {}
-  death() {
-    this.polygon.remove();
-  }
 }

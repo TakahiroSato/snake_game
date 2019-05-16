@@ -4,8 +4,9 @@ import childBox from "childBox";
 import feed from "feed";
 
 export default class {
-  constructor(threejs) {
+  constructor(threejs, canvas2d) {
     this.threejs = threejs;
+    this.canvas2d = canvas2d;
     this.player;
     this.childs = [];
     this._feed = null;
@@ -20,6 +21,7 @@ export default class {
     this._feed = v;
   }
   init() {
+    this.threejs.fillStyle = "#ffffff";
     for (let i = 0; i <= settings.mapWidth; i++) {
       this.threejs.moveTo(settings.cellWidth * i, 0);
       this.threejs.lineTo(
@@ -37,6 +39,8 @@ export default class {
     this.player = new player(this.threejs, 0, 0, 50, 50, 50);
   }
   main() {
+    this.canvas2d.clear();
+    this.canvas2d.drawText("SCORE : " + this.childs.length, 0, 0);
     this.player.move();
     this.childs.map(c => {
       c.move();

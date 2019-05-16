@@ -104,8 +104,8 @@ export class threejs2d {
     // );
     this.camera.up.set(0, 0, 1);
     //this.camera.position.set(0, 0, this.height / 2);
-    this.camera.position.set(-50, -500, 450);
-    this.camera.lookAt(new THREE.Vector3(0, 0, 0));
+    this.camera.position.set(-300, -400, 450);
+    this.camera.lookAt(new THREE.Vector3(0, 0, -900));
     // 環境光源
     this.scene.add(new THREE.AmbientLight(0xffffff, 0.5));
   }
@@ -177,6 +177,37 @@ export class threejs2d {
     obj.d = d;
     this.scene.add(obj.mesh);
     obj.setPos(x, y, 0);
+    this.objectsArray.push(obj);
+    return obj;
+  }
+  drawText(
+    text,
+    x,
+    y,
+    color = "#ffffff",
+    size = 18,
+    font = "'ＭＳ　Ｐゴシック'"
+  ) {
+    const obj = new threejsObject(this);
+    const canvas = document.createElement("canvas");
+    canvas.width = 500;
+    canvas.height = 500;
+    const ctx = canvas.getContext("2d");
+    ctx.font = size + "pt " + font;
+    ctx.fillStyle = color;
+    ctx.textAlign = "left";
+    ctx.textBaseline = "top";
+    ctx.fillText(text, 0, 0);
+    document.body.appendChild(canvas);
+    obj.texture = new THREE.Texture(canvas);
+    obj.texture.needsUpdate = true;
+    obj.material = new THREE.SpriteMaterial({
+      map: obj.texture
+    });
+    obj.mesh = new THREE.Sprite(obj.material);
+    obj.mesh.scale.set(200, 200, 200);
+    obj.mesh.position.set(x, y, 0);
+    this.scene.add(obj.mesh);
     this.objectsArray.push(obj);
     return obj;
   }
