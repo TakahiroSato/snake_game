@@ -104,8 +104,8 @@ export class threejs2d {
     // );
     this.camera.up.set(0, 0, 1);
     //this.camera.position.set(0, 0, this.height / 2);
-    this.camera.position.set(-425, -400, 450);
-    this.camera.lookAt(new THREE.Vector3(-50, 0, -950));
+    this.camera.position.set(-450, -350, 525);
+    this.camera.lookAt(new THREE.Vector3(-120, 250, -950));
     // 環境光源
     this.scene.add(new THREE.AmbientLight(0xffffff, 0.5));
   }
