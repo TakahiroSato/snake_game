@@ -83,8 +83,8 @@ export class threejs2d {
     this.div.appendChild(this.renderer.domElement); // div領域にレンダラーを配置
     this.scene = new THREE.Scene(); // シーンの生成
     // 座標軸を表示
-    let axes = new THREE.AxesHelper(this.width);
-    this.scene.add(axes);
+    //let axes = new THREE.AxesHelper(this.width);
+    //this.scene.add(axes);
     let directionalLight = new THREE.DirectionalLight(0xffffff);
     directionalLight.position.set(0, 0.7, 0.7);
     this.scene.add(directionalLight);
@@ -104,8 +104,8 @@ export class threejs2d {
     // );
     this.camera.up.set(0, 0, 1);
     //this.camera.position.set(0, 0, this.height / 2);
-    this.camera.position.set(-300, -400, 450);
-    this.camera.lookAt(new THREE.Vector3(0, 0, -900));
+    this.camera.position.set(-425, -400, 450);
+    this.camera.lookAt(new THREE.Vector3(-50, 0, -950));
     // 環境光源
     this.scene.add(new THREE.AmbientLight(0xffffff, 0.5));
   }

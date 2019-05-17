@@ -1,4 +1,6 @@
 let keyboard = {
+  p: () => {},
+  esc: () => {},
   right: () => {},
   left: () => {},
   up: () => {},
@@ -7,6 +9,10 @@ let keyboard = {
 
 document.onkeydown = e => {
   let f = {};
+  // p
+  f["80"] = () => keyboard.p();
+  // escape
+  f["27"] = () => keyboard.esc();
   // left
   f["37"] = () => keyboard.left();
   // up

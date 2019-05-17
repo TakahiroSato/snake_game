@@ -16,6 +16,12 @@ export default class box extends movableObject {
   death() {
     this.polygon.remove();
   }
+  detectCollision(b){
+    return  this.x < b.x + b.w &&
+            this.x + this.w > b.x &&
+            this.y < b.y + b.h &&
+            this.y + this.h > b.y
+  }
   get x() {
     return super.x;
   }

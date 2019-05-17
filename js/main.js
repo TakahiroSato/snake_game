@@ -10,7 +10,7 @@ const game = new gameMgr(threejs, canvas2d);
 game.init();
 
 function setAnimation() {
-  game.main();
+  game.scene();
 }
 
 (function loop() {

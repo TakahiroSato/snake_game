@@ -3,11 +3,17 @@
 
 <head>
   <meta charset="utf-8" />
-  <!--meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1" /-->
+  <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <style type="text/css">
+    #wrapper{
+      margin: auto;
+      position: relative;
+      width: 1200px;
+      height: 700px;
+    }
     #canvas3d {
-      position: fixed;
+      position: absolute;
       top: 0px;
       left: 0px;
       width: 100%;
@@ -15,7 +21,7 @@
       z-index: 1;
     }
     #canvas2d{
-      position: fixed;
+      position: absolute;
       top: 0px;
       left: 0px;
       width: 100%;
@@ -27,8 +33,10 @@
 </head>
 
 <body>
-  <div id="canvas3d"></div>
-  <canvas id="canvas2d"></canvas>
+  <div id="wrapper">
+    <div id="canvas3d"></div>
+    <canvas id="canvas2d" width="1200px" height="700px"></canvas>
+  </div>
   <script src="main.bundle.js"></script>
 </body>
 

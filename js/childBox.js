@@ -23,7 +23,7 @@ export default class childBox extends box {
   move() {
     this.parentMoveHistory.push({ mx: this.parent.mx, my: this.parent.my });
     if (
-      this.parentMoveHistory.length >=
+      this.parentMoveHistory.length >
       Math.floor(settings.cellWidth / settings.moveSpeed)
     ) {
       if (
