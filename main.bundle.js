@@ -202,7 +202,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\nvar _mapWidth = 15;\nvar _mapHeight = 15;\nvar _cellWidth = 50;\nvar _cellHeight = 50;\nvar settings = {\n  mapWidth: _mapWidth,\n  mapHeight: _mapHeight,\n  cellWidth: _cellWidth,\n  cellHeight: _cellHeight,\n  fieldWidth: function () {\n    return _mapWidth * _cellWidth;\n  }(),\n  fieldHeight: function () {\n    return _mapHeight * _cellHeight;\n  }(),\n  moveSpeed: 5\n};\n/* harmony default export */ __webpack_exports__[\"default\"] = (settings);\n\n//# sourceURL=webpack:///./js/settings.js?");
+eval("__webpack_require__.r(__webpack_exports__);\nvar _mapWidth = 15;\nvar _mapHeight = 14;\nvar _cellWidth = 50;\nvar _cellHeight = 50;\nvar settings = {\n  mapWidth: _mapWidth,\n  mapHeight: _mapHeight,\n  cellWidth: _cellWidth,\n  cellHeight: _cellHeight,\n  fieldWidth: function () {\n    return _mapWidth * _cellWidth;\n  }(),\n  fieldHeight: function () {\n    return _mapHeight * _cellHeight;\n  }(),\n  moveSpeed: 5\n};\n/* harmony default export */ __webpack_exports__[\"default\"] = (settings);\n\n//# sourceURL=webpack:///./js/settings.js?");
 
 /***/ }),
 
