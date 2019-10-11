@@ -89,29 +89,50 @@ export default class {
     };
   }
   feedGen() {
+    if (this.childs.length + 1 >= settings.mapWidth * settings.mapHeight)
+      return;
     if (this.feed === null) {
-      const x =
-        Math.floor(Math.random() * settings.mapWidth) * settings.cellWidth;
-      const y =
-        Math.floor(Math.random() * settings.mapHeight) * settings.cellHeight;
+      let x,
+        y = 0;
+      while (true) {
+        x = Math.floor(Math.random() * settings.mapWidth) * settings.cellWidth;
+        y =
+          Math.floor(Math.random() * settings.mapHeight) * settings.cellHeight;
+        if (
+          !this.childs.some(child => {
+            if (
+              child.x < x + 50 &&
+              child.x + child.w > x &&
+              child.y < y + 50 &&
+              child.y + child.h > y
+            ) {
+              return true;
+            }
+            return false;
+          })
+        ) {
+          break;
+        }
+      }
       this.feed = new feed(this.threejs, x, y, 50, 50, 50);
     }
   }
   hitCheck() {
-    if (this.feed === null) return;
-    if (this.player.detectCollision(this.feed)) {
-      if (this.childs.length === 0) {
-        this.childs.push(new childBox(this.threejs, "#ff0000", this.player));
-      } else {
-        this.childs.push(
-          new childBox(
-            this.threejs,
-            "#ff0000",
-            this.childs[this.childs.length - 1]
-          )
-        );
+    if (this.feed) {
+      if (this.player.detectCollision(this.feed)) {
+        if (this.childs.length === 0) {
+          this.childs.push(new childBox(this.threejs, "#ff0000", this.player));
+        } else {
+          this.childs.push(
+            new childBox(
+              this.threejs,
+              "#ff0000",
+              this.childs[this.childs.length - 1]
+            )
+          );
+        }
+        this.feed = null;
       }
-      this.feed = null;
     }
     if (this.player.mx === 0 && this.player.my === 0) {
       this.scene = this.gameOver;
