@@ -12,6 +12,14 @@ export default class {
     this.childs = [];
     this._feed = null;
     this.scene = () => {};
+
+    document.getElementById("2dmode").addEventListener("change", e => {
+      if (document.getElementById("2dmode").checked) {
+        this.threejs.changeCamera2d();
+      } else {
+        this.threejs.changeCamera3d();
+      }
+    });
   }
   reset() {
     this.canvas2d.clear();
@@ -46,7 +54,14 @@ export default class {
         settings.cellHeight * i
       );
     }
-    this.player = new player(this.threejs, 0, 0, 50, 50, 50);
+    this.player = new player(
+      this.threejs,
+      0,
+      0,
+      settings.cellWidth,
+      settings.cellHeight,
+      50
+    );
     this.player.mx = settings.moveSpeed;
     keyboard.esc = () => {
       this.reset();
@@ -101,9 +116,9 @@ export default class {
         if (
           !this.childs.some(child => {
             if (
-              child.x < x + 50 &&
+              child.x < x + settings.cellWidth &&
               child.x + child.w > x &&
-              child.y < y + 50 &&
+              child.y < y + settings.cellHeight &&
               child.y + child.h > y
             ) {
               return true;
@@ -114,7 +129,14 @@ export default class {
           break;
         }
       }
-      this.feed = new feed(this.threejs, x, y, 50, 50, 50);
+      this.feed = new feed(
+        this.threejs,
+        x,
+        y,
+        settings.cellWidth,
+        settings.cellHeight,
+        50
+      );
     }
   }
   hitCheck() {

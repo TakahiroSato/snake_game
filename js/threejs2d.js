@@ -88,26 +88,32 @@ export class threejs2d {
     let directionalLight = new THREE.DirectionalLight(0xffffff);
     directionalLight.position.set(0, 0.7, 0.7);
     this.scene.add(directionalLight);
+    this.changeCamera3d();
+    // 環境光源
+    this.scene.add(new THREE.AmbientLight(0xffffff, 0.5));
+  }
+  changeCamera3d() {
     this.camera = new THREE.PerspectiveCamera(
       this.fov,
       this.width / this.height,
       this.near,
       this.far
     );
-    // this.camera = new THREE.OrthographicCamera(
-    //   this.width / -2,
-    //   this.width / 2,
-    //   this.height / 2,
-    //   this.height / -2,
-    //   this.near,
-    //   this.far
-    // );
     this.camera.up.set(0, 0, 1);
-    //this.camera.position.set(0, 0, this.height / 2);
     this.camera.position.set(-450, -350, 525);
     this.camera.lookAt(new THREE.Vector3(-120, 250, -950));
-    // 環境光源
-    this.scene.add(new THREE.AmbientLight(0xffffff, 0.5));
+  }
+  changeCamera2d() {
+    this.camera = new THREE.OrthographicCamera(
+      this.width / -2,
+      this.width / 2,
+      this.height / 2,
+      this.height / -2,
+      this.near,
+      this.far
+    );
+    this.camera.position.set(-250, 0, this.height / 2);
+    this.camera.lookAt(new THREE.Vector3(-250, 0, 0));
   }
   setCameraPosition(x, y, z) {
     this.camera.position.set(-x, y, this.height / 2 + z);
