@@ -10,7 +10,7 @@
   "author": "takahiro.sato",
   "license": "ISC",
   "dependencies": {
-    "three": "^0.104.0"
+    "three": "^0.125.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.4",
